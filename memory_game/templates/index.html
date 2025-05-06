@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Memory Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Advanced Memory Game</h1>
+            <div class="game-info">
+                <div class="timer">Time: <span id="timer">00:00</span></div>
+                <div class="moves">Moves: <span id="moves">0</span></div>
+                <div class="score">Score: <span id="score">0</span></div>
+            </div>
+        </header>
+        
+        <div class="control-panel">
+            <div class="difficulty-selector">
+                <label for="difficulty">Difficulty:</label>
+                <select id="difficulty">
+                    <option value="easy">Easy</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+            <button id="start-game" class="btn">Start Game</button>
+            <button id="restart-game" class="btn" disabled>Restart Game</button>
+        </div>
+        
+        <div class="game-board" id="game-board">
+            <!-- Cards will be dynamically inserted here -->
+            <div class="start-screen">
+                <h2>Memory Card Game</h2>
+                <p>Select difficulty and press Start Game to begin!</p>
+            </div>
+        </div>
+        
+        <div class="leaderboard-section">
+            <h2>Leaderboard</h2>
+            <table id="leaderboard">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Difficulty</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Leaderboard entries will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Game End Modal -->
+    <div id="game-end-modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Game Over</h2>
+            <p id="modal-message">Your score: <span id="final-score">0</span></p>
+            <div class="score-submission">
+                <label for="player-name">Enter your name:</label>
+                <input type="text" id="player-name" maxlength="20">
+                <button id="submit-score" class="btn">Submit Score</button>
+            </div>
+            <button id="play-again" class="btn">Play Again</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/game.js') }}"></script>
+</body>
+</html>
